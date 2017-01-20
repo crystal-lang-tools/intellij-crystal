@@ -1,0 +1,166 @@
+{
+    parserClass='org.crystal.lang.core.parser.CrystalParser'
+
+    elementTypeHolderClass='org.crystal.lang.core.psi.CrystalCompositeElementTypes'
+
+    elementTypeClass='org.crystal.lang.core.psi.CrystalCompositeElementType'
+    tokenTypeClass='org.crystal.lang.core.psi.CrystalTokenType'
+
+    psiClassPrefix='Crystal/Element'
+    psiImplClassSuffix='Impl'
+    psiPackage='org.crystal.lang.core.psi'
+    psiImplPackage='org.crystal.lang.core.psi.impl'
+
+    tokens = [
+        LEFT_BRACE              = '{'
+        RIGHT_BRACE             = '}'
+        LEFT_PARENTHESIS        = '('
+        RIGHT_PARENTHESIS       = ')'
+        LEFT_BRACKET            = '['
+        RIGHT_BRACKET           = ']'
+        BRACKET                 = '|'
+
+        DOT                     = '.'
+        COMMA                   = ','
+
+        EQUAL                   = '='
+        EQUAL_EQUAL             = '=='
+        EQUAL_EQAUL_EQUAL       = '==='
+
+        BACKSLASH               = '\'
+        ARROW                   = '=>'
+        APROX_ARROW             = "=~"
+
+        NOT_EQUAL               = "!="
+        NOT_APROX               = "!~"
+        NOT                     = "!"
+        LEFT_RIGHT_ARROW        = "<=>"
+        LEFT_ARROW              = "<="
+        LEFT_LEFT_ARROW         = "<<="
+        INSERT                  = "<<"
+        LESS                    = "<"
+        GREATER_EQUAL           = ">="
+        GREATER_GREATER_EQUAL   = ">>="
+        GREATER_GREATER         = ">>"
+        GREATER                 = ">"
+        PLUS_EQUAL              = "+="
+        PLUS                    = "+"
+        MINUS_EQUAL             = "-="
+        MINUS_GREATER           = "->"
+        MINUS                   = "-"
+        TIMES_EQUAL             = "*="
+        TIMES_TIMES_EQUAL       = "**="
+        TIMES_TIMES             = "**"
+        TIMES                   = "*"
+        DIVIDE_EQUAL            = "/="
+        DIVIDE                  = "/"
+        MODULO_EQUAL            = "%="
+        MODULE                  = "%"
+        MACRO_BLOCK_CLOSE       = "%}"
+        MACRO_BLOCK_OPEN        = "{%"
+        MACRO_STATEMENT_OPEN    = "{{"
+        ARRAY_EQUAL             = "[]="
+        ARRAY_BOOL              = "[]?"
+        ARRAY                   = "[]"
+        QUESTION                = "?"
+        SEMICOLON               = ";"
+        NAMESPACE               = "::"
+        COLON                   = ":"
+        TILDE                   = "~"
+        DOT_DOT_DOT             = "..."
+        DOT_DOT                 = ".."
+        AND_AND_EQUAL           = "&&="
+        AND_AND                 = "&&"
+        AND_EQUAL               = "&="
+        AND                     = "&"
+        OR_OR_EQUAL             = "||="
+        OR_OR                   = "||"
+        OR_EQUAL                = "|="
+        CAROT_EQUAL             = "^="
+        CAROT                   = "^"
+        AT_BRACKET              = "@["
+        DOLLAR_TILDE            = "$~"
+        DOLLAR_QUESTION         = "$?"
+
+        // Keywords
+
+        ABSTRACT            = 'abstract'
+        ALIAS               = 'alias'
+        ASM                 = 'asm'
+        AS                  = 'as'
+        AS_Q                = 'as?'
+        BEGIN               = 'begin'
+        BREAK               = 'break'
+        CASE                = 'case'
+        CLASS               = 'class'
+        DEF                 = 'def'
+        DO                  = 'do'
+        ELSE                = 'else'
+        ELSIF               = 'elsif'
+        END                 = 'end'
+        ENSURE              = 'ensure'
+        ENUM                = 'enum'
+        EXTEND              = 'extend'
+        FALSE               = 'false'
+        FOR                 = 'for'
+        FUN                 = 'fun'
+        IF                  = 'if'
+        INCLUDE             = 'include'
+        INSTANCE_SIZEOF     = 'instance_sizeof'
+        IS_A                = 'is_a?'
+        LIB                 = 'lib'
+        MACRO               = 'macro'
+        MODULE              = 'module'
+        NEXT                = 'next'
+        NIL_Q               = 'nil?'
+        NIL                 = 'nil'
+        OF                  = 'of'
+        OUT                 = 'out'
+        POINTEROF           = 'pointerof'
+        PRIVATE             = 'private'
+        PROTECTED           = 'protected'
+        RESCUE              = 'rescue'
+        RESPONDS_TO         = 'responds_to?'
+        RETURN              = 'return'
+        REQUIRE             = 'require'
+        SELECT              = 'select'
+        SELF                = 'self'
+        SIZEOF              = 'sizeof'
+        STRUCT              = 'struct'
+        SUPER               = 'super'
+        THEN                = 'then'
+        TRUE                = 'true'
+        TYPEOF              = 'typeof'
+        TYPE                = 'type'
+        UNION               = 'union'
+        UNITIALIZED         = 'unitialized'
+        UNLESS              = 'unless'
+        UNTIL               = 'until'
+        WHEN                = 'when'
+        WITH                = 'with'
+        YEILD               = 'yield'
+
+        DIR                 = '__DIR__'
+        END_LINE            = '__END_LINE__'
+        FILE                = '__FILE__'
+        LINE                = '__LINE__'
+
+        comment             = 'regexp:#.*'
+
+        space               = 'regexp:\s+'
+        number              = 'regexp:(\+|\-)?(0b[01_]+|0o[0-7_]+|0x[a-fA-f\d_]+|[\d_]+)(\.[\d_]+)?(e[-+]?[\d_]+)?(_?(i|f|u)(8|16|32|64))?'
+        string              = 'regexp:("([^\"\\]|\\.)*")'
+        char                = "regexp:('([^'\\]|\\.)*')"
+        symbol              = 'regexp:(:("([^\"\\]|\\.)*"|\S+))'
+    ]
+}
+
+root ::= literal *
+
+private literal ::= ( NIL
+                    | TRUE
+                    | FALSE
+                    | number
+                    | char
+                    | string
+                    | symbol)

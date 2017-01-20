@@ -1,0 +1,42 @@
+static def codegenTask(project, task) {
+    project.compileKotlin.dependsOn task
+    project.compileTestKotlin.dependsOn task
+    return task
+}
+
+def lexerTask(project, lexerName, pkg) {
+    return codegenTask(project, tasks.create("generate${lexerName}", JavaExec) {
+        def src = "$project.projectDir/src/main/grammars/${lexerName}.flex"
+        def dst = "$project.projectDir/src/gen/$pkg"
+
+        main = 'jflex.Main'
+        classpath = files('lib/jflex/jflex-1.7.0-SNAPSHOT.jar')
+
+        args = ['--skel', 'lib/jflex/idea-flex.skeleton',
+                '-d', dst,
+                src
+        ]
+
+        inputs.file file(src)
+        outputs.dir file("$dst/_${lexerName}.java")
+    })
+}
+
+def parserTask(project, parserName, pkg) {
+    return codegenTask(project, tasks.create("generate${parserName}", JavaExec) {
+        def dstRoot = "$project.projectDir/src/gen"
+        def src = "$project.projectDir/src/main/grammars/${parserName}.bnf"
+        def dst = "$dstRoot/$pkg"
+        doFirst {
+            delete file(dst)
+        }
+
+        main = 'org.intellij.grammar.Main'
+        classpath(configurations.compile + files('lib/grammar-kit.jar'))
+
+        args = [dstRoot, file(src)]
+
+        inputs.file file(src)
+        outputs.dir fileTree(dir: dst, include: '**/*.java')
+    })
+}

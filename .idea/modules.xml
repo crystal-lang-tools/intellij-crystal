@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/intellij-crystal.iml" filepath="$PROJECT_DIR$/.idea/modules/intellij-crystal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/intellij-crystal_main.iml" filepath="$PROJECT_DIR$/.idea/modules/intellij-crystal_main.iml" group="intellij-crystal" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/intellij-crystal_test.iml" filepath="$PROJECT_DIR$/.idea/modules/intellij-crystal_test.iml" group="intellij-crystal" />
+    </modules>
+  </component>
+</project>

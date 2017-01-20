@@ -1,0 +1,111 @@
+buildscript {
+    ext.kotlin_version = '1.0.5'
+    ext.javaVersion = '1.8'
+
+    repositories {
+        mavenCentral()
+        maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.1.10"
+}
+
+apply plugin: 'idea'
+idea {
+    module {
+        generatedSourceDirs += file('src/gen')
+    }
+}
+
+intellij {
+    pluginName 'intellij-crystal'
+    downloadSources Boolean.valueOf(downloadIdeaSources)
+    // FIXME: hack to support both IDEA 15 and IDEA 16.
+    // See https://github.com/intellij-rust/intellij-rust/issues/243
+    updateSinceUntilBuild = false
+    instrumentCode = false
+
+    publish {
+        username publishUsername
+        password publishPassword
+        channel publishChannel
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+sourceSets {
+    main {
+        java.srcDirs += 'src/gen'
+        // Exclude miglayout bundled with the IDE because we need a newer version, which
+        // is only available since 2016.3
+        compileClasspath = compileClasspath.filter { it.name != 'miglayout-swing.jar' }
+    }
+}
+
+group 'io.github.intellij-crystal'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+lexerTask(project, 'CrystalLexer', 'org/crystal/lang/core/parser')
+parserTask(project, 'CrystalParser', 'org/crystal/lang/core/psi')
+
+static def codegenTask(project, task) {
+    project.compileKotlin.dependsOn task
+    project.compileTestKotlin.dependsOn task
+    return task
+}
+
+def lexerTask(project, lexerName, pkg) {
+    return codegenTask(project, tasks.create("generate${lexerName}", JavaExec) {
+        def src = "$project.projectDir/src/main/grammars/${lexerName}.flex"
+        def dst = "$project.projectDir/src/gen/$pkg"
+
+        main = 'jflex.Main'
+        classpath = files('lib/jflex/jflex-1.7.0-SNAPSHOT.jar')
+
+        args = ['--skel', 'lib/jflex/idea-flex.skeleton',
+                '-d', dst,
+                src
+        ]
+
+        inputs.file file(src)
+        outputs.dir file("$dst/_${lexerName}.java")
+    })
+}
+
+def parserTask(project, parserName, pkg) {
+    return codegenTask(project, tasks.create("generate${parserName}", JavaExec) {
+        def dstRoot = "$project.projectDir/src/gen"
+        def src = "$project.projectDir/src/main/grammars/${parserName}.bnf"
+        def dst = "$dstRoot/$pkg"
+        doFirst {
+            delete file(dst)
+        }
+
+        main = 'org.intellij.grammar.Main'
+        classpath(configurations.compile + files('lib/grammar-kit.jar'))
+
+        args = [dstRoot, file(src)]
+
+        inputs.file file(src)
+        outputs.dir fileTree(dir: dst, include: '**/*.java')
+    })
+}

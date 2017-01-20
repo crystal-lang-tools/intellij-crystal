@@ -1,0 +1,65 @@
+<idea-plugin version="2">
+    <id>org.crystal.lang</id>
+    <name>Crystal</name>
+
+    <vendor url="https://github.com/intellij-crystal/intellij-crystal"/>
+
+    <description><![CDATA[
+      Crystal language support
+    ]]></description>
+
+    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="145" until-build="173.*"/>
+
+    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+
+    <depends>com.intellij.modules.lang</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Crystal -->
+
+        <!-- File-type Factory -->
+
+        <fileTypeFactory implementation="org.crystal.lang.CrystalFileTypeFactory"/>
+
+        <!-- Parser -->
+
+        <lang.parserDefinition language="Crystal" implementationClass="org.crystal.lang.core.parser.CrystalParserDefinition"/>
+        <stubElementTypeHolder class="org.crystal.lang.core.psi.CrystalCompositeElementTypes"/>
+
+        <!-- Syntax Highlighter -->
+        <lang.syntaxHighlighterFactory language="Crystal"
+                                       implementationClass="org.crystal.ide.highlight.CrystalHighlighterFactory"/>
+
+        <!-- Color Settings -->
+
+        <colorSettingsPage implementation="org.crystal.ide.colors.CrystalColorSettingsPage"/>
+
+        <!--
+        <additionalTextAttributes scheme="Default" file="org/crystal/ide/colors/CrystalDefault.xml"/>
+        <additionalTextAttributes scheme="Darcula" file="org/crystal/ide/colors/CrystalDarcula.xml"/>
+        -->
+    </extensions>
+
+    <depends optional="true" config-file="idea-only.xml">com.intellij.modules.java</depends>
+
+    <application-components>
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <module-components>
+    </module-components>
+
+    <actions>
+        <action id="Crystal.NewCrystalFile"
+                class="org.crystal.ide.actions.CrystalCreateFileAction"
+                text="Crystal File"
+                description="Create New Crystal File">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+        </action>
+    </actions>
+
+</idea-plugin>

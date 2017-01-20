@@ -1,0 +1,7 @@
+<idea-plugin version="2">
+    <extensions defaultExtensionNs="com.intellij">
+        <moduleType id="CRYSTAL_MODULE" implementationClass="org.crystal.ide.idea.CrystalModuleType"/>
+        <moduleBuilder builderClass="org.crystal.ide.idea.CrystalModuleBuilder"/>
+        <projectStructureDetector implementation="CrystalProjectStructureDetector"/>
+    </extensions>
+</idea-plugin>
