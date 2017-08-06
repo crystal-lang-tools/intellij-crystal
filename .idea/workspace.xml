@@ -6,27 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b98d7c7-df9f-480b-87c1-51985935395a" name="Default" comment="Fixed being unable to compile">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/intellij_crystal_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_13_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_1_3.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_runtime_1_0_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_0_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gen/org/crystal/lang/core/parser/_CrystalLexer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gen/org/crystal/lang/core/psi/CrystalCompositeElementTypes.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gen/org/crystal/lang/core/psi/CrystalElementVisitor.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/intellij-crystal.iml" afterPath="$PROJECT_DIR$/.idea/modules/intellij-crystal.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/intellij-crystal_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/intellij-crystal_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/intellij-crystal_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/intellij-crystal_test.iml" />
+    <list default="true" id="1b98d7c7-df9f-480b-87c1-51985935395a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gen/org/crystal/lang/core/parser/CrystalParser.java" afterPath="$PROJECT_DIR$/src/gen/org/crystal/lang/core/parser/CrystalParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/grammars/CrystalParser.bnf" afterPath="$PROJECT_DIR$/src/main/grammars/CrystalParser.bnf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/org/crystal/ide/highlight/CrystalHighlighter.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/org/crystal/ide/highlight/CrystalHighlighter.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/org/crystal/ide/idea/CrystalModuleType.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/org/crystal/ide/idea/CrystalModuleType.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -1537,12 +1518,20 @@
       <workItem from="1483769291114" duration="2122000" />
       <workItem from="1502008982408" duration="89000" />
       <workItem from="1502009196839" duration="908000" />
-      <workItem from="1502010136691" duration="2860000" />
+      <workItem from="1502010136691" duration="2910000" />
     </task>
+    <task id="LOCAL-00001" summary="Fixed being unable to compile">
+      <created>1502013024434</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1502013024434</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45843000" />
+    <option name="totallyTimeSpent" value="45893000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
