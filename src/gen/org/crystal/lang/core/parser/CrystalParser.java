@@ -14,21 +14,21 @@ import com.intellij.lang.LightPsiParser;
 @SuppressWarnings({"SimplifiableIfStatement", "UnusedAssignment"})
 public class CrystalParser implements PsiParser, LightPsiParser {
 
-  public ASTNode parse(IElementType root_, PsiBuilder builder_) {
-    parseLight(root_, builder_);
-    return builder_.getTreeBuilt();
+  public ASTNode parse(IElementType t, PsiBuilder b) {
+    parseLight(t, b);
+    return b.getTreeBuilt();
   }
 
-  public void parseLight(IElementType root_, PsiBuilder builder_) {
-    boolean result_;
-    builder_ = adapt_builder_(root_, builder_, this, null);
-    Marker marker_ = enter_section_(builder_, 0, _COLLAPSE_, null);
-    result_ = parse_root_(root_, builder_, 0);
-    exit_section_(builder_, 0, marker_, root_, result_, true, TRUE_CONDITION);
+  public void parseLight(IElementType t, PsiBuilder b) {
+    boolean r;
+    b = adapt_builder_(t, b, this, null);
+    Marker m = enter_section_(b, 0, _COLLAPSE_, null);
+    r = parse_root_(t, b, 0);
+    exit_section_(b, 0, m, t, r, true, TRUE_CONDITION);
   }
 
-  protected boolean parse_root_(IElementType root_, PsiBuilder builder_, int level_) {
-    return root(builder_, level_ + 1);
+  protected boolean parse_root_(IElementType t, PsiBuilder b, int l) {
+    return root(b, l + 1);
   }
 
   /* ********************************************************** */
@@ -39,30 +39,30 @@ public class CrystalParser implements PsiParser, LightPsiParser {
   //                     | char
   //                     | string
   //                     | symbol
-  static boolean literal(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "literal")) return false;
-    boolean result_;
-    Marker marker_ = enter_section_(builder_);
-    result_ = consumeToken(builder_, NIL);
-    if (!result_) result_ = consumeToken(builder_, TRUE);
-    if (!result_) result_ = consumeToken(builder_, FALSE);
-    if (!result_) result_ = consumeToken(builder_, NUMBER);
-    if (!result_) result_ = consumeToken(builder_, CHAR);
-    if (!result_) result_ = consumeToken(builder_, STRING);
-    if (!result_) result_ = consumeToken(builder_, SYMBOL);
-    exit_section_(builder_, marker_, null, result_);
-    return result_;
+  static boolean literal(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "literal")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, NIL);
+    if (!r) r = consumeToken(b, TRUE);
+    if (!r) r = consumeToken(b, FALSE);
+    if (!r) r = consumeToken(b, NUMBER);
+    if (!r) r = consumeToken(b, CHAR);
+    if (!r) r = consumeToken(b, STRING);
+    if (!r) r = consumeToken(b, SYMBOL);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   /* ********************************************************** */
   // literal *
-  static boolean root(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "root")) return false;
-    int pos_ = current_position_(builder_);
+  static boolean root(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "root")) return false;
+    int c = current_position_(b);
     while (true) {
-      if (!literal(builder_, level_ + 1)) break;
-      if (!empty_element_parsed_guard_(builder_, "root", pos_)) break;
-      pos_ = current_position_(builder_);
+      if (!literal(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "root", c)) break;
+      c = current_position_(b);
     }
     return true;
   }

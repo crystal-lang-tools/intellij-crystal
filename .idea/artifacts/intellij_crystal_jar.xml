@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="intellij-crystal:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/intellij_crystal_jar</output-path>
+    <root id="archive" name="intellij-crystal_jar.jar">
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
+      <element id="module-output" name="intellij-crystal_main" />
+    </root>
+  </artifact>
+</component>

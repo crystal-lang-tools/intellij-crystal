@@ -119,6 +119,7 @@
         POINTEROF           = 'pointerof'
         PRIVATE             = 'private'
         PROTECTED           = 'protected'
+        RAISE               = 'raise'
         RESCUE              = 'rescue'
         RESPONDS_TO         = 'responds_to?'
         RETURN              = 'return'
