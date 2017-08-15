@@ -18,15 +18,6 @@ class CrystalHighlighter : SyntaxHighlighterBase() {
 
     companion object {
         fun map(tokenType: IElementType?): CrystalColor? = when (tokenType) {
-//            CHAR_LITERAL                   -> CrystalColor.CHAR
-//            BYTE_LITERAL                   -> CrystalColor.CHAR
-//            STRING_LITERAL                 -> CrystalColor.STRING
-//            BYTE_STRING_LITERAL            -> CrystalColor.STRING
-//            RAW_STRING_LITERAL             -> CrystalColor.STRING
-//            RAW_BYTE_STRING_LITERAL        -> CrystalColor.STRING
-//            INTEGER_LITERAL                -> CrystalColor.NUMBER
-//            FLOAT_LITERAL                  -> CrystalColor.NUMBER
-
             LEFT_PARENTHESIS, RIGHT_PARENTHESIS     -> CrystalColor.PARENTHESIS
             LEFT_BRACE, RIGHT_BRACE                 -> CrystalColor.BRACES
             LEFT_BRACKET, RIGHT_BRACKET             -> CrystalColor.BRACKETS

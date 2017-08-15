@@ -14,7 +14,7 @@ class CrystalModuleType : ModuleType<CrystalModuleBuilder>(ID) {
 
     override fun getNodeIcon(isOpened: Boolean): Icon = CrystalIcons.CRYSTAL
 
-    override fun getBigIcon(): Icon = CrystalIcons.CRYSTAL_BIG
+    fun getBigIcon(): Icon = CrystalIcons.CRYSTAL_BIG
 
     companion object {
         private val ID = "CRYSTAL_MODULE"

@@ -1,6 +1,7 @@
-<idea-plugin version="2">
+<idea-plugin>
     <id>org.crystal.lang</id>
     <name>Crystal</name>
+    <version>1.0</version>
 
     <vendor url="https://github.com/intellij-crystal/intellij-crystal"/>
 
